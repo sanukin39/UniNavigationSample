@@ -20,11 +20,6 @@ public class LabyrinthGenerator : MonoBehaviour
     int boardHeight;
     List<Vector2> dir = new List<Vector2> { Vector2.up, Vector2.down, Vector2.right, Vector2.left };
 
-    private void Start()
-    {
-        CreateLabyrinth(51, 45);
-    }
-
     /// <summary>
     /// 迷路を生成する
     /// ※生成する迷路の高さ幅は必ず奇数にする
@@ -51,10 +46,7 @@ public class LabyrinthGenerator : MonoBehaviour
         float boardPosX = boardWidth / 2f - 0.5f;
         float boardPosZ = boardHeight / 2f - 0.5f;
 
-        ground.transform.localScale = new Vector3(boardWidth, 1, boardHeight);
-        ground.transform.position = new Vector3(boardPosX, 0, boardPosZ);
-
-        Camera.main.transform.position = new Vector3(boardPosX, (boardWidth + boardHeight) / 2, boardPosZ);
+        Camera.main.transform.position = new Vector3(boardPosX * 2, boardWidth + boardHeight, boardPosZ * 2);
 
         board = new bool[boardWidth, boardHeight];
 
@@ -136,7 +128,7 @@ public class LabyrinthGenerator : MonoBehaviour
             {
                 if (board[i, j])
                 {
-                    Instantiate(wall, new Vector3(i, 0.5f, j), Quaternion.identity);
+                    Instantiate(wall, new Vector3(i * 2, 0.5f, j * 2), Quaternion.identity);
                 }
             }
         }
