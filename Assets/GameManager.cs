@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        var width = 41;
-        var height = 43;
+        var width = 51;
+        var height = 51;
         labyrinthGenerator.CreateLabyrinth(width, height);
         player.transform.position = new Vector3(2, 0.5f, (height * 2 - 4));
         target.transform.position = new Vector3((width * 2 - 4), 0.5f, 2);
